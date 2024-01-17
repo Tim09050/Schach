@@ -1,2 +1,0 @@
-# Schach
-Ein einfaches Schachspiel
