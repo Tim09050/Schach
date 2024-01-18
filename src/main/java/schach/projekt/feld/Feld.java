@@ -10,6 +10,8 @@ public class Feld extends JButton {
         this.setBackground(((index + Math.floor(index / 8)) % 2 != 0) ? darkBrown : lightBrown);
         this.addActionListener(new FeldAktion(this));
         this.setBorderPainted(false);
+
+        this.setOpaque(true);
     }
 
 }
