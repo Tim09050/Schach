@@ -2,6 +2,7 @@ package schach.projekt.schachFiguren;
 
 import com.kitfox.svg.SVGDiagram;
 import com.kitfox.svg.SVGUniverse;
+import schach.projekt.feld.Feld;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +13,12 @@ public abstract class Schachfiguren extends JLabel {
 
     private final File datei;
     private final Teams team;
+    private final Feld jetzigesFeld;
 
-    public Schachfiguren(String PfadZurDatei, Teams team) {
+    public Schachfiguren(String PfadZurDatei, Teams team, Feld startFeld) {
         datei = new File(PfadZurDatei);
         this.team = team;
+        this.jetzigesFeld = startFeld;
     }
 
     @Override
@@ -38,5 +41,9 @@ public abstract class Schachfiguren extends JLabel {
             System.out.println("ex2");
         }
 
+    }
+
+    public Feld getJetzigesFeld() {
+        return jetzigesFeld;
     }
 }
