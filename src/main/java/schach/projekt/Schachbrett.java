@@ -1,14 +1,15 @@
 package schach.projekt;
 
 import schach.projekt.feld.Feld;
+import schach.projekt.schachFiguren.SchachfigurPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Schachbrett implements Runnable {
     private JPanel BrettFenster;
-    public static final int breite = 800;
-    public static final int länge = 800;
+    public static final int BREITE = 800;
+    public static final int LAENGE = 800;
 
 
     public JPanel generiereBildschirm(){
@@ -28,7 +29,8 @@ public class Schachbrett implements Runnable {
 
     private void showGUI(){
         JFrame frame = new JFrame("SchachBrett");
-        frame.setPreferredSize(new Dimension(breite, länge));
+        frame.setPreferredSize(new Dimension(BREITE, LAENGE));
+        frame.setLayeredPane(new SchachfigurPanel());
         frame.setContentPane(generiereBildschirm());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
