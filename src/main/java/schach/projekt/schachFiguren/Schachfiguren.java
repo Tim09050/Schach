@@ -11,13 +11,15 @@ import java.io.File;
 public abstract class Schachfiguren extends JLabel {
 
     private final File datei;
+    private final Teams team;
 
-    public Schachfiguren(String PfadZurDatei) {
+    public Schachfiguren(String PfadZurDatei, Teams team) {
         datei = new File(PfadZurDatei);
+        this.team = team;
     }
 
-
-    public void teilFärben(Graphics grafik){
+    @Override
+    protected void paintComponent(Graphics grafik){
         SVGUniverse svgUniverse = new SVGUniverse();
         try {
             SVGDiagram diagramm = svgUniverse.getDiagram(svgUniverse.loadSVG(datei.toURI().toURL()));
