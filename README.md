@@ -2,6 +2,7 @@ Ein stink normaler Tag und ein stink normales Schachspiel. Hoffentlich sieht sic
 
 
 Jetziger Stand:
+   
     + Spiel funktioniert, Teams spielen nacheinander
     
     - EnPassant funktioniert nicht
