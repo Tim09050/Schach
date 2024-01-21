@@ -21,8 +21,8 @@ public class Feld extends JButton {
     public Feld(int spalte, int zeile){
         this.spalte = spalte;
         this.zeile = zeile;
-        this.neueFarbe = new Color(218, 196,49);
         int index = zeile * 8 + spalte;
+        this.neueFarbe = new Color(218, 196,49);
         Color blue = new Color(71, 117, 171);
         Color white = new Color(214, 221, 229);
         this.setBackground(((index + (double) (index / 8)) % 2 != 0) ? blue : white);
@@ -88,6 +88,7 @@ public class Feld extends JButton {
     public int getFeldId() {
         return feldId;
     }
+
 
     public boolean isKannBewegen() {
         return kannBewegen;

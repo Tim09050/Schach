@@ -6,17 +6,19 @@ import schach.projekt.Schachbrett.Schachbrett;
 import schach.projekt.schachFiguren.SchachfigurPanel;
 import schach.projekt.schachFiguren.Schachfiguren;
 import schach.projekt.schachFiguren.Teams;
+import schach.projekt.schachFiguren.figuren.Bauer;
 import schach.projekt.schachFiguren.figuren.Koenig;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FeldAktion implements ActionListener {
 
     final Feld feld;
 
-    private int zähler = 0;
+
     public FeldAktion(Feld feld) {
         this.feld = feld;
     }
@@ -46,7 +48,7 @@ public class FeldAktion implements ActionListener {
             }
         }
 
-        if(istImSchach(Teams.WHITE)) {
+         if(istImSchach(Teams.WHITE)) {
             System.out.println("Weißer König im Schach!");
             if(istSchachmatt(Teams.WHITE)) {
                 System.out.println("Schachmatt! Spiel vorbei. Schwarz gewinnt");
@@ -59,7 +61,6 @@ public class FeldAktion implements ActionListener {
             }
         }
 
-        GameManager.ueberpruefeBauernUmwandlung();
 
     }
 

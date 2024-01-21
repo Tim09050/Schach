@@ -73,29 +73,5 @@ public class GameManager {
         return zug = (zug == Teams.WHITE) ? Teams.BLACK : Teams.WHITE;
     }
 
-    public static void ueberpruefeBauernUmwandlung() {
-        Teams aktuellesTeam = getAktuellesTeam();
-        Feld[] letzteReihe = (aktuellesTeam == Teams.WHITE)
-                ? new Feld[]{Schachbrett.felder[0], Schachbrett.felder[1], Schachbrett.felder[2], Schachbrett.felder[3],
-                Schachbrett.felder[4], Schachbrett.felder[5], Schachbrett.felder[6], Schachbrett.felder[7]}
-                : new Feld[]{Schachbrett.felder[56], Schachbrett.felder[57], Schachbrett.felder[58], Schachbrett.felder[59],
-                Schachbrett.felder[60], Schachbrett.felder[61], Schachbrett.felder[62], Schachbrett.felder[63]};
 
-
-        for (Feld feld : letzteReihe) {
-            Schachfiguren figur = feld.getFigurAufFeld();
-            if (figur instanceof Bauer && figur.getTeam() == aktuellesTeam) {
-                int feldId = feld.getFeldId();
-                if ((aktuellesTeam == Teams.WHITE && feldId >= 0 && feldId <= 7) ||
-                        (aktuellesTeam == Teams.BLACK && feldId >= 56 && feldId <= 63)) {
-
-
-                    Koenigin neueFigur = new Koenigin(aktuellesTeam, feld);
-                    feld.setFigurAufFeld(neueFigur);
-
-
-                }
-            }
-        }
-    }
 }
