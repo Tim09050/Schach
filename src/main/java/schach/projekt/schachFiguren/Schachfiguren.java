@@ -8,12 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.io.File;
+import java.util.ArrayList;
 
 public abstract class Schachfiguren extends JLabel {
 
     private final File datei;
     private final Teams team;
-    private final Feld jetzigesFeld;
+    private Feld jetzigesFeld;
 
     public Schachfiguren(String PfadZurDatei, Teams team, Feld startFeld) {
         datei = new File(PfadZurDatei);
@@ -46,4 +47,18 @@ public abstract class Schachfiguren extends JLabel {
     public Feld getJetzigesFeld() {
         return jetzigesFeld;
     }
+
+    public Teams getTeam() {
+        return team;
+    }
+
+    public abstract ArrayList<Feld> getGueltigenZug();
+
+    public void bewegeZuEinemNeuemFeld(Feld neuesFeld) {
+        this.getJetzigesFeld().setFigurAufFeld(null);
+        this.jetzigesFeld = neuesFeld;
+        neuesFeld.setFigurAufFeld(this);
+    }
+
+    public void bewegt(){}
 }
