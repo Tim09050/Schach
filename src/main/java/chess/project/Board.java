@@ -12,10 +12,53 @@ public class Board extends JPanel {
     int column = 8;
     int row = 8;
     ArrayList<Piece> pieceList = new ArrayList<>();
+    public Piece selectedPiece;
+    Input input = new Input(this);
 
     public Board(){
         this.setPreferredSize(new Dimension(column * tileSize, row * tileSize));
+        this.addMouseListener(input);
+        this.addMouseMotionListener(input);
+
         addPieces();
+    }
+
+    public Piece getPiece(int column, int row){
+        for(Piece piece : pieceList){
+            if(piece.column == column && piece.row == row){
+                return piece;
+            }
+        }
+        return null;
+    }
+
+    public void makeMove(Move move){
+        move.piece.column = move.newColumn;
+        move.piece.row = move.newRow;
+
+        move.piece.xPos = move.newColumn * tileSize;
+        move.piece.yPos = move.newRow * tileSize;
+
+        capture(move);
+    }
+
+    public void capture(Move move){
+        pieceList.remove(move.capture);
+    }
+
+    public boolean isValidMove(Move move){
+        if(sameTeam(move.piece, move.capture)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean sameTeam(Piece firstPiece, Piece secondPiece){
+        if(firstPiece == null || secondPiece == null) {
+            return false;
+        }
+        return firstPiece.isWhite == secondPiece.isWhite;
     }
 
     public void addPieces() {
