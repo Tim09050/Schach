@@ -50,6 +50,12 @@ public class Board extends JPanel {
         if(sameTeam(move.piece, move.capture)) {
             return false;
         }
+        if(!move.piece.isValidMovement(move.newColumn, move.newRow)){
+            return false;
+        }
+        if(move.piece.moveCollidesWithPiece(move.newColumn, move.newRow)){
+            return false;
+        }
 
         return true;
     }
@@ -97,19 +103,32 @@ public class Board extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         Graphics2D graphics2D = (Graphics2D) g;
         Color blue = new Color(71, 117, 171);
         Color white = new Color(214, 221, 229);
 
-        for(int r = 0; r < row; r++){
-            for(int c = 0; c < column; c++){
-                graphics2D.setColor((r+c) % 2 == 0 ? white : blue);
+        for (int r = 0; r < row; r++){
+            for (int c = 0; c < column; c++) {
+                graphics2D.setColor((r + c) % 2 == 0 ? white : blue);
                 graphics2D.fillRect(c * tileSize, r * tileSize, tileSize, tileSize);
             }
+        }
+        if(selectedPiece != null) {
+            for (int r = 0; r < row; r++) {
+                for (int c = 0; c < column; c++) {
+                    if (isValidMove(new Move(this, selectedPiece, c, r))) {
+                        graphics2D.setColor(new Color(68, 179, 57, 190));
+                        graphics2D.fillRect(c * tileSize, r * tileSize, tileSize, tileSize);
+                    }
+                }
+            }
+        }
+
+
             for(Piece piece : pieceList){
                 piece.paint(graphics2D);
             }
-        }
+
     }
 }

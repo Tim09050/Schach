@@ -17,4 +17,9 @@ public class Knight extends Piece{
 
         this.sprite = sheet.getSubimage(3 * sheetScale, isWhite ? 0 : sheetScale, sheetScale, sheetScale).getScaledInstance(board.tileSize, board.tileSize, BufferedImage.SCALE_SMOOTH);
     }
+
+    @Override
+    public boolean isValidMovement(int column, int row) {
+        return Math.abs(column - this.column) * Math.abs(row - this.row) == 2;
+    }
 }

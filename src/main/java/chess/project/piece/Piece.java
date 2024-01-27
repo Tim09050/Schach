@@ -29,6 +29,14 @@ public class Piece {
         this.board = board;
     }
 
+    public boolean isValidMovement(int column, int row){
+        return true;
+    }
+
+    public boolean moveCollidesWithPiece(int column, int row){
+        return false;
+    }
+
     public void paint(Graphics2D graphics2D){
         graphics2D.drawImage(sprite, xPos, yPos, null);
     }
