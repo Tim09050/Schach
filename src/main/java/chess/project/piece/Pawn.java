@@ -31,16 +31,21 @@ public class Pawn extends Piece{
         if(isFirstMove && this.column == column &&  row == this.row - colorIndex * 2 && board.getPiece(column, row) == null && board.getPiece(column, row + colorIndex) == null) {
             return true;
         }
-
+        //capture left
         if(column == this.column - 1 && row == this.row -colorIndex && board.getPiece(column, row) != null) {
             return true;
         }
-
+        //capture right
         if(column == this.column + 1 && row == this.row -colorIndex && board.getPiece(column, row) != null) {
             return true;
         }
-
-
+        //en passant
+        if(board.getTileNumber(column, row) == board.enPassantTile && column == this.column - 1 && row == this.row - colorIndex && board.getPiece(column, row + colorIndex) != null) {
+            return true;
+        }
+        if(board.getTileNumber(column, row) == board.enPassantTile && column == this.column + 1 && row == this.row - colorIndex && board.getPiece(column, row + colorIndex) != null) {
+            return true;
+        }
         return false;
     }
 }
