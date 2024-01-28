@@ -18,4 +18,29 @@ public class Pawn extends Piece{
 
         this.sprite = sheet.getSubimage(5 * sheetScale, isWhite ? 0 : sheetScale, sheetScale, sheetScale).getScaledInstance(board.tileSize, board.tileSize, BufferedImage.SCALE_SMOOTH);
     }
+
+    @Override
+    public boolean isValidMovement(int column, int row) {
+        int colorIndex = isWhite ? 1 : -1;
+
+        //moving one forward
+        if(this.column == column &&  row == this.row - colorIndex && board.getPiece(column, row) == null) {
+            return true;
+        }
+        //moving two forward
+        if(isFirstMove && this.column == column &&  row == this.row - colorIndex * 2 && board.getPiece(column, row) == null && board.getPiece(column, row + colorIndex) == null) {
+            return true;
+        }
+
+        if(column == this.column - 1 && row == this.row -colorIndex && board.getPiece(column, row) != null) {
+            return true;
+        }
+
+        if(column == this.column + 1 && row == this.row -colorIndex && board.getPiece(column, row) != null) {
+            return true;
+        }
+
+
+        return false;
+    }
 }

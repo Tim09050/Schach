@@ -12,6 +12,8 @@ public class Piece {
     public int column, row, value, xPos, yPos;
     public boolean isWhite;
     public String name;
+
+    public boolean isFirstMove = true;
     BufferedImage sheet;
     {
         try{
