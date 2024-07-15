@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StartChess {
-    public static void main(String[] args) {
+    
+    void main(String[] args) {
         JFrame jFrame = new JFrame();
         jFrame.getContentPane().setBackground(Color.BLACK);
         jFrame.setLayout(new GridBagLayout());
